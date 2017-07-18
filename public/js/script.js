@@ -2,6 +2,7 @@
 $(function () {
   const $placeSearch = $('#placeSearch')
   const apiurl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?'
+  const apiPhoto = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400'
   const apiKey = '&key=AIzaSyB5C7u0uu4AcwuXbsOboP-CZA-pgPdMIDs'
 
   $placeSearch.on('submit', function (e) {
@@ -18,6 +19,16 @@ $(function () {
         var $newLi = $('<li>')
         $newLi.html(place.name)
         $searchResult.append($newLi)
+
+        var photoRef = `&photoreference=${place.photos[0].photo_reference}`
+        var $newImg = $('<img>')
+        $newImg.attr({
+          src: `${apiPhoto}${photoRef}${apiKey}`,
+          alt: place.name
+        })
+        $searchResult.append($newImg)
+
+        console.log()
       })
     })
   })
