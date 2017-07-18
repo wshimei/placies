@@ -18,6 +18,7 @@ mongoose.connect(url, {
     console.log(err)
   }
 )
+app.use(express.static('public'))
 
 app.engine('handlebars', hbars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
