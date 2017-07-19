@@ -2,6 +2,7 @@
 const mongoose = require('mongoose')
 const express = require('express')
 const hbars = require('express-handlebars')
+const bodyParser = require('body-parser')
 
 // express itself
 const app = express()
@@ -22,6 +23,10 @@ app.use(express.static('public'))
 
 app.engine('handlebars', hbars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+// listens to json submission
+app.use(bodyParser.json())
+// listens to data submission -form
+app.use(bodyParser.urlencoded({extended: true}))
 
 // setup all files that the project needs to require
 const placesRoute = require('./routes/placeRoute')
