@@ -1,0 +1,8 @@
+<h1 class="title is-4">Place</h1>
+
+{{place.name}}
+
+<h1 class="title is-4">Liked By</h1>
+{{#each place.users as |user|}}
+  {{user.name}}
+{{/each}}

@@ -19,13 +19,23 @@ function list (req, res) {
       console.log(err)
       return
     }
-    res.render('places', {
+    res.render('places/index', {
       places: allPlaces
     })
   })
 }
 
+function show (req, res) {
+  Place.findOne({_id: req.params.id})
+        .populate('users')
+        .exec(function (err, foundPlace) {
+          if (err) res.send(err)
+          res.render('places/show', {place: foundPlace})
+        })
+}
+
 module.exports = {
   create,
-  list
+  list,
+  show
 }

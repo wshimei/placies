@@ -41,6 +41,13 @@ function create (req, res) {
     newUser.places.push(req.body.place)
     newUser.save()
   })
+
+  Place.findOne({_id: req.body.place}, function (err, foundPlace) {
+    if (err) res.send(err)
+
+    foundPlace.users.push(newUser)
+    foundPlace.save()
+  })
 }
 
 function newUser (req, res) {
@@ -57,8 +64,18 @@ function newUser (req, res) {
   })
 }
 
+function show (req, res) {
+  User.findOne({_id: req.params.id})
+      .populate('places')
+      .exec(function (err, foundUser) {
+        if (err) res.send(err)
+        res.render('users/show', {user: foundUser})
+      })
+}
+
 module.exports = {
   list,
   create,
-  newUser
+  newUser,
+  show
 }
