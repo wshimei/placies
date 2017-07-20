@@ -1,19 +1,19 @@
-<h1>Search for places</h1>
+<h1 class="title is-4">Search for places</h1>
 
-<form id="placeSearch" action="#" method="post">
-  <label for="keyword">Search</label>
-  <input type="text" name="keyword" id="keyword" value="">
-  <input type="submit" value="Search">
+<form class="field" id="placeSearch" action="#" method="post">
+  <label class="label" for="keyword">Search</label>
+  <input class="input column is-4" type="text" name="keyword" id="keyword" value="">
+  <input class="button is-primary" type="submit" value="Search">
 </form>
 
 <div class="lists">
   <ul id="search-result">
-    <h1>Search Result</h1>
+    <h1 class="title is-4">Search Result</h1>
     <img id="spinner" class="hidden" src="./img/Spinner.gif" alt="loading">
   </ul>
 
   <ul id="added-list">
-  <h1>Added Places</h1>
+  <h1 class="title is-4">Added Places</h1>
     {{#each places as |place|}}
       <li>
         <div class="">

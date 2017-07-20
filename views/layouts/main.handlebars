@@ -4,17 +4,26 @@
     <meta charset="utf-8">
     <title>Placies</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.min.css">
   </head>
   <body>
-    <h1>Placies</h1>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href='/places'>Places</a></li>
-      <li><a href="/users">Users</a></li>
-      <li><a href="/users/new">Register</a></li>
-    </ul>
+    <div class="container">
 
+    <nav class="navbar nav-color">
+      <div class="navbar-brand">
+        <a class="navbar-item title" href="/">Placies</h1>
+      </div>
+
+        <a class="navbar-item" href='/places'>Places</a>
+        <a class="navbar-item" href="/users">Users</a>
+        <a class="navbar-item" href="/users/new">Register</a>
+
+    </nav>
+  </div>
+
+  <div class="container">
     {{{ body }}}
+  </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="/js/script.js" charset="utf-8"></script>
