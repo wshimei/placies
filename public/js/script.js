@@ -59,7 +59,6 @@ $(function () {
           }
 
           $.post('/places', newPlace).done(function (data) {
-            console.log(data)
             $newLi.html(newPlace.name)
             $addedList.append($newLi)
           })

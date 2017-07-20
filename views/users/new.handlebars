@@ -1,0 +1,27 @@
+<h1 id="register">Register New Users</h1>
+
+<form id="newUserForm" action="/users" method="post">
+  <label>
+    <input type="text" name="user[name]" placeholder="Name">
+  </label>
+
+  <label>
+    <input type="text" name="user[email]" placeholder="Email">
+  </label>
+
+  <label>
+    <input type="password" name="user[password]" placeholder="Password">
+  </label>
+
+  <label>
+    <select name="places">
+      {{#each places as |place|}}
+      <option value="{{place.id}}">
+        {{place.name}}
+      </option value="{{place.id}}">
+      {{/each}}
+    </select>
+  </label>
+
+  <button>Submit</button>
+</form>

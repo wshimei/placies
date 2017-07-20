@@ -1,3 +1,18 @@
 .hidden {
   display: none;
 }
+
+.lists {
+  display: inline;
+}
+
+#search-result {
+  width: 40%;
+  display: inline-block;
+}
+
+#added-list {
+  width: 40%;
+  vertical-align: top;
+  display: inline-block;
+}

@@ -30,9 +30,15 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 // setup all files that the project needs to require
 const placesRoute = require('./routes/placeRoute')
+const usersRoute = require('./routes/userRoute')
+
+app.get('/', function (req, res) {
+  res.render('home')
+})
 
 // setup the routes
 app.use('/places', placesRoute)
+app.use('/users', usersRoute)
 
 // opening the port
 const port = 5000

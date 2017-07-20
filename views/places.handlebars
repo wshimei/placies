@@ -6,10 +6,24 @@
   <input type="submit" value="Search">
 </form>
 
-<ul id="search-result">
-  <img id="spinner" class="hidden" src="./img/Spinner.gif" alt="loading">
-</ul>
+<div class="lists">
+  <ul id="search-result">
+    <h1>Search Result</h1>
+    <img id="spinner" class="hidden" src="./img/Spinner.gif" alt="loading">
+  </ul>
 
-<ul id="added-list">
-  
-</ul>
+  <ul id="added-list">
+  <h1>Added Places</h1>
+    {{#each places as |place|}}
+      <li>
+        <div class="">
+          {{place.name}}
+          <br>
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{place.reference}}&key=AIzaSyDD5x1McH5fSk3kUJu3VKpwax7oXiBjF4s" alt="{{place.name}}">
+        </div>
+      </li>
+
+    {{/each}}
+  </ul>
+
+</div>

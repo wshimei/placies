@@ -3,7 +3,11 @@ const mongoose = require('mongoose')
 var placeSchema = new mongoose.Schema({
   name: String,
   address: String,
-  reference: String
+  reference: String,
+  users: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }]
 })
 
 // mongoose.model(<singular form>, model)

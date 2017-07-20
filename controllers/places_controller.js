@@ -1,27 +1,28 @@
 const Place = require('../models/place')
 
 function create (req, res) {
-  var newList = new Place({
+  var newPlace = new Place({
     name: req.body.name,
     address: req.body.address,
     reference: req.body.reference
   })
 
-  newList.save(function (err, data) {
-    if (err) throw err
-
+  newPlace.save(function (err, data) {
+    if (err) res.send(err)
     res.send('new place created')
   })
 }
 
 function list (req, res) {
-  // Places.find({}, function (err, places) {
-  //   if (err) {
-  //     console.log(err)
-  //     return
-  //   }
-  res.render('places')
-  // })
+  Place.find({}, function (err, allPlaces) {
+    if (err) {
+      console.log(err)
+      return
+    }
+    res.render('places', {
+      places: allPlaces
+    })
+  })
 }
 
 module.exports = {
