@@ -9,7 +9,7 @@ const bodyParser = require('body-parser')
 // express itself
 const app = express()
 
-const url = 'mongodb://localhost:27017/placies'
+const url = process.env.URI || 'mongodb://localhost:27017/placies'
 mongoose.Promise = global.Promise
 mongoose.connect(url, {
   useMongoClient: true
@@ -43,7 +43,7 @@ app.use('/places', placesRoute)
 app.use('/users', usersRoute)
 
 // opening the port
-const port = 5000
+const port = process.env.PORT || 5000
 app.listen(port, function () {
   console.log(`express is running on port ${port}`)
 })

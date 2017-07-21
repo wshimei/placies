@@ -19,7 +19,7 @@ $(function () {
     for (var i = 3; i < $formData.length; i++) {
       newUser.places.push($formData[i].value)
     }
-    
+
     $.ajax({
       url: '/users',
       type: 'post',
