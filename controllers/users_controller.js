@@ -1,8 +1,6 @@
 const User = require('../models/User')
 const Place = require('../models/Place')
 
-// const bcrypt = require('bcrypt')
-
 function list (req, res) {
   User.find({}, function (err, foundUser) {
     if (err) res.send(err)
@@ -14,14 +12,7 @@ function list (req, res) {
   })
 }
 
-function create (req, res) {
-  // var hash = bcrypt.hashSync(req.body.user.password, 10)
-  //
-  // res.send({
-  //   reqbody: req.body,
-  //   hash: hash
-  // })
-
+function create (req, res, next) {
   var newUser = new User({
     name: req.body.user.name,
     email: req.body.user.email,
@@ -30,7 +21,7 @@ function create (req, res) {
   })
 
   newUser.save(function (err, newUser) {
-    if (err) res.send(err)
+    if (err) next(err)
 
     res.format({
       html: function () {
@@ -44,8 +35,8 @@ function create (req, res) {
   })
 
   for (var i = 0; i < newUser.places.length; i++) {
-    Place.findOne({_id: newUser.places[i]}, function (err, foundPlace) {
-      if (err) res.send(err)
+    Place.findOne({_id: newUser.places[i]}, function (err, foundPlace, next) {
+      if (err) next(err)
 
       foundPlace.users.push(newUser)
       foundPlace.save()
