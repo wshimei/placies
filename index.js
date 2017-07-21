@@ -1,4 +1,6 @@
 // all the modules we install and need to require
+require('dotenv').config()
+
 const mongoose = require('mongoose')
 const express = require('express')
 const hbars = require('express-handlebars')

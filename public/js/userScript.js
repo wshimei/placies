@@ -13,9 +13,13 @@ $(function () {
         email: $formData[1].value,
         password: $formData[2].value
       },
-      place: $formData[3].value
+      places: []
     }
 
+    for (var i = 3; i < $formData.length; i++) {
+      newUser.places.push($formData[i].value)
+    }
+    
     $.ajax({
       url: '/users',
       type: 'post',
