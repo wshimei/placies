@@ -1,4 +1,4 @@
-const Place = require('../models/place')
+const Place = require('../models/Place')
 
 function create (req, res) {
   var newPlace = new Place({
