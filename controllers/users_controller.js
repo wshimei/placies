@@ -1,5 +1,5 @@
-const User = require('../models/user')
-const Place = require('../models/place')
+const User = require('../models/User')
+const Place = require('../models/Place')
 
 // const bcrypt = require('bcrypt')
 
