@@ -34,6 +34,8 @@ app.use(bodyParser.urlencoded({extended: true}))
 const placesRoute = require('./routes/placeRoute')
 const usersRoute = require('./routes/userRoute')
 
+app.locals = {PLACES_KEY: process.env.PLACES_KEY}
+
 app.get('/', function (req, res) {
   res.render('home')
 })

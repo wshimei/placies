@@ -1,13 +1,14 @@
+/* global PLACES_KEY */
 $(function () {
   const $placeSearch = $('#placeSearch')
   const apiurl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?'
   const apiPhoto = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='
-  const apiKey = '&key=AIzaSyDD5x1McH5fSk3kUJu3VKpwax7oXiBjF4s'
+  const apiKey = `&key=${PLACES_KEY}`
   const $spinner = $('#spinner')
 
   $placeSearch.on('submit', function (e) {
     e.preventDefault()
-    
+
     $spinner.fadeIn()
 
     var keywordObj = $(this).serializeArray()
