@@ -7,6 +7,7 @@ $(function () {
 
   $placeSearch.on('submit', function (e) {
     e.preventDefault()
+    
     $spinner.fadeIn()
 
     var keywordObj = $(this).serializeArray()

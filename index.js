@@ -8,8 +8,8 @@ const bodyParser = require('body-parser')
 
 // express itself
 const app = express()
-
-const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/placies'
+// process.env.MONGODB_URI
+const url = 'mongodb://localhost:27017/placies'
 mongoose.Promise = global.Promise
 mongoose.connect(url, {
   useMongoClient: true

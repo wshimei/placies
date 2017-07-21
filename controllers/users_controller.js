@@ -3,23 +3,6 @@ const Place = require('../models/Place')
 
 // const bcrypt = require('bcrypt')
 
-// getting all places straight from google api
-// const request = require('request')
-//
-// const apiurl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?'
-// const qString = `query=hotels in singapore`
-// const apiKey = '&key=AIzaSyDD5x1McH5fSk3kUJu3VKpwax7oXiBjF4s'
-//
-// request(`${apiurl}${qString}${apiKey}`, function (err, response, body) {
-//   if (err) res.send(err)
-//
-//   var data = JSON.parse(body)
-//
-//   res.render('users/new', {
-//     places: data.results
-//   })
-// })
-
 function list (req, res) {
   User.find({}, function (err, foundUser) {
     if (err) res.send(err)
@@ -68,6 +51,21 @@ function create (req, res) {
       foundPlace.save()
     })
   }
+
+  // // getting all places from google place api
+  // const apiUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?'
+  // const apiKey = `&key=${process.env.PLACES_KEY}`
+  // const qString = `query=hotels in new york`
+  //
+  // request(`${apiUrl}${qString}${apiKey}`, function (err, response, body) {
+  //   if (err) res.send(err)
+  //
+  //   var data = JSON.parse(body)
+  //
+  //   res.render('users/new', {
+  //     places: data.results
+  //   })
+  // })
 }
 
 function newUser (req, res) {

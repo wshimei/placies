@@ -9,7 +9,10 @@ function create (req, res) {
 
   newPlace.save(function (err, data) {
     if (err) res.send(err)
-    res.send('new place created')
+    res.send({
+      status: 'ok',
+      message: 'New place created'
+    })
   })
 }
 
