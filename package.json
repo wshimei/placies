@@ -15,7 +15,7 @@
     "request": "^2.81.0"
   },
   "scripts": {
-    "start": "nodemon index"
+    "start": "nodemon"
   },
   "standard": {
     "globals": [
