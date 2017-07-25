@@ -4,7 +4,6 @@ const Place = require('../models/Place')
 function list (req, res) {
   User.find({}, function (err, foundUser) {
     if (err) res.send(err)
-    // res.send(foundUser)
 
     res.render('users/index', {
       users: foundUser
@@ -21,17 +20,28 @@ function create (req, res, next) {
   })
 
   newUser.save(function (err, newUser) {
-    if (err) next(err)
+    if (err) {
+      // res.format({
+      //   html: function () {
+      //     req.flash('errors', err.message)
+      //     return res.redirect('users/new')
+      //   },
+      //   json: function () {
+      //
+      //   }
+      // })
+      return res.send(err)
+    } else {
+      res.format({
+        html: function () {
+          return res.send('<p>Hey</p>')
+        },
+        json: function () {
+          return res.send('response for ajax')
+        }
+      })
+    }
 
-    res.format({
-      html: function () {
-        res.send('<p>Hey</p>')
-      },
-      json: function () {
-        res.send('response for ajax')
-      }
-    })
-    newUser.save()
   })
 
   for (var i = 0; i < newUser.places.length; i++) {
@@ -62,12 +72,12 @@ function create (req, res, next) {
 function newUser (req, res) {
   User.find({}, function (err, foundUser) {
     if (err) res.send(err)
-    // res.send(foundUser)
     Place.find({}, function (err, foundPlaces) {
       if (err) res.send(err)
       res.render('users/new', {
         users: foundUser,
-        places: foundPlaces
+        places: foundPlaces,
+        flash: req.flash('errors')
       })
     })
   })

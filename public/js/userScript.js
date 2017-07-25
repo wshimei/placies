@@ -3,7 +3,6 @@ $(function () {
 
   $newUserForm.on('submit', function (e) {
     e.preventDefault()
-    $newUserForm.addClass('hidden')
 
     var $formData = $(this).serializeArray()
 
@@ -27,14 +26,16 @@ $(function () {
       dataType: 'json',
       contentType: 'application/json',
       success: function (output) {
-
+        if (!output.errors) {
+          const $register = $('#register')
+          $newUserForm.addClass('hidden')
+          $register.html(`Hi ${newUser.user.name}! Thanks for Joining!`)
+        } else {
+          var $flash = $('#flash')
+          $flash.text(output.message)
+        }
       }
     })
-
-    const $userList = $('#userList')
-    const $register = $('#register')
-    $register.html(`Hi ${newUser.user.name}! Thanks for Joining!`)
-    $userList.append($register)
 
     // $.post('/users', newUser).done(function (output) {
     // })
